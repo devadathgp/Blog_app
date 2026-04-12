@@ -1,0 +1,19 @@
+# created by virtualenv automatically
+*# Virtual environment
+Lib/
+Scripts/
+pyvenv.cfg
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# Env files
+.env
+
+# OS
+.DS_Store
+Thumbs.db
