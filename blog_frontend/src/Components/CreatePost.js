@@ -58,7 +58,7 @@ function Create() {
 
     try {
       const res = await axios.post(
-        "http://127.0.0.1:8000/api/create_post/",
+        `${process.env.REACT_APP_API_URL || "http://127.0.0.1:8000"}` + "/api/create_post/",
         data,
         {
           headers: {

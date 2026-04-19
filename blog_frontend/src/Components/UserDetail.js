@@ -29,7 +29,7 @@ const UserDetail = () => {
     const fetchUserDetail = async () => {
       try {
         const res = await axios.get(
-          `http://127.0.0.1:8000/api/user_detail/${userId}/`, {
+          `${process.env.REACT_APP_API_URL || `${process.env.REACT_APP_API_URL || "http://127.0.0.1:8000"}` + ""}/api/user_detail/${userId}/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -54,7 +54,7 @@ const UserDetail = () => {
 
     try {
       const token = localStorage.getItem("access");
-      await axios.delete(`http://127.0.0.1:8000/api/post_view/${postId}/`, {
+      await axios.delete(`${process.env.REACT_APP_API_URL || `${process.env.REACT_APP_API_URL || "http://127.0.0.1:8000"}` + ""}/api/post_view/${postId}/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -102,7 +102,7 @@ const UserDetail = () => {
                     <div className="post-card">
                       {post.image && (
                         <img
-                          src={`http://127.0.0.1:8000${post.image}`}
+                          src={`${process.env.REACT_APP_API_URL || `${process.env.REACT_APP_API_URL || "http://127.0.0.1:8000"}` + ""}${post.image}`}
                           alt={post.title}
                           className="post-image"
                         />

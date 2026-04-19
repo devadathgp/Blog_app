@@ -15,7 +15,7 @@ const PostDetail = () => {
 
     if (!id) return;
 
-    axios.get(`http://127.0.0.1:8000/api/post_view/${id}/`, {
+    axios.get(`${process.env.REACT_APP_API_URL || `${process.env.REACT_APP_API_URL || "http://127.0.0.1:8000"}` + ""}/api/post_view/${id}/`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -40,7 +40,7 @@ const PostDetail = () => {
 
     try {
       const res = await axios.post(
-        `http://127.0.0.1:8000/api/post_view/${post.id}/`, // ✅ FIXED URL
+        `${process.env.REACT_APP_API_URL || `${process.env.REACT_APP_API_URL || "http://127.0.0.1:8000"}` + ""}/api/post_view/${post.id}/`, // ✅ FIXED URL
         {
           comment: newComment, // ✅ correct field
         },
@@ -70,7 +70,7 @@ const PostDetail = () => {
 
         {post.image && (
           <img
-            src={`http://127.0.0.1:8000${post.image}`}
+            src={`${process.env.REACT_APP_API_URL || `${process.env.REACT_APP_API_URL || "http://127.0.0.1:8000"}` + ""}${post.image}`}
             alt={post.title}
             className="post-image"
           />

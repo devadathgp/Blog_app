@@ -23,7 +23,7 @@ function Register() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://127.0.0.1:8000/accounts/register/", formData);
+      const res = await axios.post(`${process.env.REACT_APP_API_URL || "http://127.0.0.1:8000"}` + "/accounts/register/", formData);
       console.log(res.data);
       setMessage("Registration Successful ✅. Redirecting to login...");
       setTimeout(() => {

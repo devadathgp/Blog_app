@@ -29,7 +29,7 @@ function Home() {
 
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8000/api/posts/${postId}/like/`,
+        `${process.env.REACT_APP_API_URL || `${process.env.REACT_APP_API_URL || "http://127.0.0.1:8000"}` + ""}/api/posts/${postId}/like/`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -53,7 +53,7 @@ function Home() {
     const token = localStorage.getItem("access");
 
     axios
-      .get("http://127.0.0.1:8000/api/home_page/", {
+      .get(`${process.env.REACT_APP_API_URL || "http://127.0.0.1:8000"}` + "/api/home_page/", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -132,7 +132,7 @@ function Home() {
                   <Link to={`/post_view/${post.id}`}>
                     <div className="post-card">
                       {post.image && (
-                        <img src={`http://127.0.0.1:8000${post.image}`} alt={post.title} className="post-image" />
+                        <img src={`${process.env.REACT_APP_API_URL || `${process.env.REACT_APP_API_URL || "http://127.0.0.1:8000"}` + ""}${post.image}`} alt={post.title} className="post-image" />
                       )}
                       <h2 className="post-title">{post.title}</h2>
                       <p className="post-content">{post.content}</p>
